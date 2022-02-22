@@ -27,11 +27,39 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        $projects = Project::query();
+
+        $sortBy = $request->input('sortBy', 'name'); // default: name, possible values: created_at/updated_at/name
+        $sortDirection = strtoupper($request->input('sortDirection', 'ASC')); // default: asc, possible values: asc/desc
+        $pageSize = max((int) $request->input('pageSize', 3), 1); // default: 3, min 1
+        $pageIndex = (int) $request->input('pageIndex', 0); // default: 0
+
+        if(in_array($sortBy, ['created_at', 'updated_at', 'name'])) {
+            $projects->orderBy(
+                $sortBy,
+                in_array($sortDirection, ['ASC', 'DESC']) ? $sortDirection : 'ASC'
+            );
+        }
+
+        if($request->has('q')) {
+            $search = $request->input('q');
+
+            $projects->where('name', 'LIKE', "%".$search."%");
+        }
+
+        // Built-in pagination links seem to mess up when using page=0
+        // as starting point. Therefor, we do the offsetting manually.
+        // Ideally, we extend it so that it works and can be re-used
+        // easily as well as provide consistent API responses with page
+        // numbers
+        $projects->skip($pageIndex * $pageSize)->take($pageSize);
+
+        $projects = $projects->get();
 
         return ProjectResource::collection($projects)
             ->response();

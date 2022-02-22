@@ -55,13 +55,13 @@ Team member only have visibility to their projects.
     2. Creating a project and assign 2 users to it.
     3. User change the status of a task assigned to themselves
 12. ✅ Commit the changes with message "Write test"
-13. Implement pagination feature `GET /api/v1/projects` API. It should be able to receive query strings:
+13. ✅ Implement pagination feature `GET /api/v1/projects` API. It should be able to receive query strings:
     1. `q` -> search keyword, will search for name
     2. `pageIndex` -> the index of the page to shown, default `0`
     3. `pageSize` -> how many items to return, default `3`
     4. `sortBy` -> attribute to sort, default `name`
     5. `sortDirection` -> direction of the sort, default `ASC`
-14. Commit the changes with message "Implement pagination"
+14. ✅ Commit the changes with message "Implement pagination"
 15. Create a postman collection for every API that you have created along with examples and put it in `docs` directory
 16. Commit the changes with message "Add postman collection"
 17. Create a PR against `main` branch and merge it, don't forget to delete the feature branch afterwards
