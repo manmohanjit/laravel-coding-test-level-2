@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 use Symfony\Component\HttpFoundation\Request;
 
 class UpdateUserRequest extends FormRequest
@@ -16,7 +18,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize() : bool
     {
-        return true;
+        return optional($this->user())->can('access-user-apis') ?? false;
     }
 
     /**
@@ -31,6 +33,9 @@ class UpdateUserRequest extends FormRequest
                 'string', 'alpha_dash', 'min:3', 'max:24',
                 Rule::unique(User::class)->ignoreModel($this->route('user')),
             ],
+            'role' => [
+                'string', new Enum(UserRole::class),
+            ],
             'password' => [
                 'string', 'min:6', 'max:72'
             ],
@@ -38,6 +43,7 @@ class UpdateUserRequest extends FormRequest
 
         if($this->isMethodIdempotent()) {
             $rules['username'][] = 'required';
+            $rules['role'][] = 'required';
             $rules['password'][] = 'required';
         }
 

@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('status', ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'])->default('NOT_STARTED');
+            $table->enum('status', ['NOT_STARTED', 'IN_PROGRESS', 'READY_FOR_TEST', 'COMPLETED'])->default('NOT_STARTED'); // When a task is created, status will be NOT_STARTED
 
             // Delete all tasks if a project is deleted
             $table->foreignUuid('project_id')

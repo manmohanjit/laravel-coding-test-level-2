@@ -14,7 +14,7 @@ class StoreTaskRequest extends FormRequest
      */
     public function authorize() : bool
     {
-        return true;
+        return optional($this->user())->can('access-project-apis') ?? false;
     }
 
     /**
@@ -27,7 +27,6 @@ class StoreTaskRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'description' => ['nullable', 'string'],
-            'status' => ['string'],
             'user_id' => ['nullable'],
         ];
     }

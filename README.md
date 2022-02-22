@@ -43,13 +43,13 @@ Team member only have visibility to their projects.
 7. ✅ Create a PR against `main` branch and merge it, don't forget to delete the feature branch afterwards
 8. Create a new branch name `feature/core-functions` from `main`
 9. Do these features:
-   1. Only `ADMIN` role can use User API
-   2. Only `PRODUCT_OWNER` role can create a project and tasks
-   3. Only `PRODUCT_OWNER` role can assign tasks to a team member in their project
-   4. Task will have either `NOT_STARTED`, `IN_PROGRESS`, `READY_FOR_TEST`, `COMPLETED` status
-   5. When a task is created, status will be `NOT_STARTED`
-   6. Team member **can only** change the status of the task assigned to them, they can edit any other attribute in a task.
-10. Commit the changes with message "Implement features"
+   1. ✅ Only `ADMIN` role can use User API
+   2. ✅ Only `PRODUCT_OWNER` role can create a project and tasks
+   3. ✅ Only `PRODUCT_OWNER` role can assign tasks to a team member in their project
+   4. ✅ Task will have either `NOT_STARTED`, `IN_PROGRESS`, `READY_FOR_TEST`, `COMPLETED` status
+   5. ✅ When a task is created, status will be `NOT_STARTED`
+   6. ✅ Team member **can only** change the status of the task assigned to them, they can edit any other attribute in a task.
+10. ✅ Commit the changes with message "Implement features"
 11. Write tests for:
     1. Creating a user by calling the API
     2. Creating a project and assign 2 users to it.

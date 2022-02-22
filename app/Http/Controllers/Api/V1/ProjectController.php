@@ -14,6 +14,17 @@ use Symfony\Component\HttpFoundation\Response;
 class ProjectController extends Controller
 {
     /**
+     * Create the controller instance and set the
+     * authorizer for the controller
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum'])->only(['store', 'update', 'destroy']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -81,6 +92,9 @@ class ProjectController extends Controller
      */
     public function destroy(Request $request, Project $project)
     {
+        // Only PRODUCT_OWNER role can create a project and tasks
+        $this->authorize('access-project-apis');
+
         $project->delete();
 
         return response()->noContent();

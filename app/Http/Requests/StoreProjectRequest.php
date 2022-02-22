@@ -13,7 +13,8 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize() : bool
     {
-        return true;
+        // Only PRODUCT_OWNER role can create a project and tasks
+        return optional($this->user())->can('access-project-apis') ?? false;
     }
 
     /**
