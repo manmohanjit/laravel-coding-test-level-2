@@ -31,16 +31,16 @@ Team member only have visibility to their projects.
       5. project_id | uuid | required
       6. user_id | uuid | required
 3. ✅ Commit the changes with message "Create models"
-4. Create REST APIs to manage User, Project and Task, your APIs must include
+4. ✅ Create REST APIs to manage User, Project and Task, your APIs must include
    1. GET retrieve all resources (ex. `GET /api/v1/users`)
    2. GET retrieve one resource by id (ex. `GET /api/v1/users/{user_id}`)
    3. POST create one resource (ex. `POST /api/v1/users`)
    4. PUT update one resource idempotent (ex. `PUT /api/v1/users/{user_id}`)
    5. PATCH update one resource (ex. `PATCH /api/v1/users/{user_id}`)
    6. DELETE remove one resource (ex. `DELETE /api/v1/users/{user_id}`)
-5. Add any other APIs and codes that you think you might need in order for this app to work properly
-6. Commit the changes with message "Create REST APIs"
-7. Create a PR against `main` branch and merge it, don't forget to delete the feature branch afterwards
+5. ✅ Add any other APIs and codes that you think you might need in order for this app to work properly
+6. ✅ Commit the changes with message "Create REST APIs"
+7. ✅ Create a PR against `main` branch and merge it, don't forget to delete the feature branch afterwards
 8. Create a new branch name `feature/core-functions` from `main`
 9. Do these features:
    1. Only `ADMIN` role can use User API
