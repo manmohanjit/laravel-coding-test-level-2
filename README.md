@@ -50,11 +50,11 @@ Team member only have visibility to their projects.
    5. ✅ When a task is created, status will be `NOT_STARTED`
    6. ✅ Team member **can only** change the status of the task assigned to them, they can edit any other attribute in a task.
 10. ✅ Commit the changes with message "Implement features"
-11. Write tests for:
+11. ✅ Write tests for:
     1. Creating a user by calling the API
     2. Creating a project and assign 2 users to it.
     3. User change the status of a task assigned to themselves
-12. Commit the changes with message "Write test"
+12. ✅ Commit the changes with message "Write test"
 13. Implement pagination feature `GET /api/v1/projects` API. It should be able to receive query strings:
     1. `q` -> search keyword, will search for name
     2. `pageIndex` -> the index of the page to shown, default `0`
