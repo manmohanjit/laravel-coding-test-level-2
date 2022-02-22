@@ -14,8 +14,8 @@ A project will be able to have team members and tasks which can be assigned to *
 Team member only have visibility to their projects.
 
 ### Instructions (MANDATORY) - FOLLOW EXACTLY
-1. Create a new branch name `feature/rest-api`
-2. Create models (you can add more models and more fields inside the model should you need it)
+1. ✅ Create a new branch name `feature/rest-api`
+2. ✅ Create models (you can add more models and more fields inside the model should you need it)
    1. User
       1. id | uuid | required | pk
       2. username | string | required | unique
@@ -30,7 +30,7 @@ Team member only have visibility to their projects.
       4. status | string | required
       5. project_id | uuid | required
       6. user_id | uuid | required
-3. Commit the changes with message "Create models"
+3. ✅ Commit the changes with message "Create models"
 4. Create REST APIs to manage User, Project and Task, your APIs must include
    1. GET retrieve all resources (ex. `GET /api/v1/users`)
    2. GET retrieve one resource by id (ex. `GET /api/v1/users/{user_id}`)
