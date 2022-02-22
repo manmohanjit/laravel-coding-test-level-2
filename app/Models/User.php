@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\UserRole;
 use App\Models\Uuid\UuidModel;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -32,6 +33,7 @@ class User extends UuidModel implements
     protected $fillable = [
         'username',
         'password',
+        'role',
     ];
 
     /**
@@ -42,6 +44,15 @@ class User extends UuidModel implements
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'role' => UserRole::class,
     ];
 
     /**

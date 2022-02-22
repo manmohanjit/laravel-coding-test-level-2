@@ -11,6 +11,18 @@ use App\Http\Resources\User as UserResource;
 class ProjectUserController extends Controller
 {
     /**
+     * Create the controller instance and set the
+     * authorizer for the controller
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Only PRODUCT_OWNER role can create a project and tasks
+        $this->middleware(['auth:sanctum', 'can:access-project-apis'])->only(['update', 'destroy']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Models\Project  $project

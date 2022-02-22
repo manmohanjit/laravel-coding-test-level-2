@@ -14,6 +14,18 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     /**
+     * Create the controller instance and set the
+     * authorizer for the controller
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Only ADMIN role can use User API
+        $this->middleware(['auth:sanctum', 'can:access-user-apis']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse

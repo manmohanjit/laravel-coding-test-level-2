@@ -13,6 +13,17 @@ use App\Http\Resources\Task as TaskResource;
 class ProjectTaskController extends Controller
 {
     /**
+     * Create the controller instance and set the
+     * authorizer for the controller
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum'])->only(['store', 'update', 'destroy']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Models\Project  $project
@@ -91,6 +102,8 @@ class ProjectTaskController extends Controller
      */
     public function destroy(Project $project, Task $task)
     {
+        $this->authorize('access-project-apis');
+
         $task->delete();
 
         return response()->noContent();

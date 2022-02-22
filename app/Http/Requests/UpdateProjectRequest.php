@@ -14,7 +14,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize() : bool
     {
-        return true;
+        return optional($this->user())->can('access-project-apis') ?? false;
     }
 
     /**
