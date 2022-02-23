@@ -1,3 +1,17 @@
+# Notes
+- PHP 8.1 needed, Enums used for User Role and Task Status
+- Redis is used as primary cache driver, can update `CACHE_DRIVER` to switch back to file
+- User email field and verification related code were removed
+- API uses Laravel Sanctum JWT Tokens
+- Usernames can only contain alpha, numeric and dash characters
+
+# Install steps
+- `composer install`
+- `cp .env.example .env`
+- `php artisan key:generate`
+- `php artisan migrate`
+
+
 # Getting Started
 
 Application Setup (DO THIS FIRST)
