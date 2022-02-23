@@ -11,6 +11,16 @@
 - `php artisan key:generate`
 - `php artisan migrate`
 
+# Demo
+https://laravel-coding-test-level-2.herokuapp.com/
+
+**Test user with ADMIN role**
+
+Username: `laravel`
+
+Password: `password`
+
+
 
 # Getting Started
 
