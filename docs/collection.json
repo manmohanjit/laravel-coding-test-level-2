@@ -1,0 +1,904 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "ACN",
+        "_postman_id": "af549670-6ebe-4239-b164-733e200cfd45",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "Show current authenticated user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n        \"username\": \"jeanette84\",\n        \"role\": \"MEMBER\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login using username and password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"username\":\"lcorkery\",\"password\":\"password\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-6ea9-4082-9c7f-c30dd0c3087d\",\n        \"username\": \"joelle.beier\",\n        \"role\": \"ADMIN\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    },\n    \"token\": \"1|YruevUgK3n01VXy6PcKfAHZA1Hu6QE5xWgzI7i9R\"\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Project Tasks",
+            "description": "",
+            "item": [
+                {
+                    "name": "List Project Tasks",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/tasks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/tasks",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": \"95aa2532-8a3f-4a5b-856f-464a54446cee\",\n            \"title\": \"sapiente officia quam modi minus\",\n            \"description\": \"Placeat veritatis ipsa qui sunt consectetur.\",\n            \"status\": \"NOT_STARTED\",\n            \"user\": {\n                \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n                \"username\": \"wswift\",\n                \"role\": \"MEMBER\",\n                \"created_at\": \"2022-02-23T01:33:30+00:00\",\n                \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n            }\n        },\n        {\n            \"id\": \"95aa2532-8b64-4ffd-8d2c-25ba084b48cb\",\n            \"title\": \"sit repudiandae enim ab animi\",\n            \"description\": \"Nam quo id alias.\",\n            \"status\": \"NOT_STARTED\",\n            \"user\": {\n                \"id\": \"95aa2532-85e0-41ce-b600-d4566b7778f3\",\n                \"username\": \"kareem.moore\",\n                \"role\": \"MEMBER\",\n                \"created_at\": \"2022-02-23T01:33:30+00:00\",\n                \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n            }\n        },\n        {\n            \"id\": \"95aa2532-8bb6-435c-b40d-3f30860565f9\",\n            \"title\": \"exercitationem atque adipisci alias illo\",\n            \"description\": \"Asperiores adipisci et ducimus commodi beatae odio quia numquam.\",\n            \"status\": \"NOT_STARTED\",\n            \"user\": {\n                \"id\": \"95aa2532-866f-41cc-a429-88ed9503906a\",\n                \"username\": \"uhalvorson\",\n                \"role\": \"MEMBER\",\n                \"created_at\": \"2022-02-23T01:33:30+00:00\",\n                \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n            }\n        }\n    ]\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Project Task",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/tasks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/tasks",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"uydbqzcpsqhsfwrwgphbagviitcswpbxepkxafaztikeafizupkvhckgckmcqsupzvlkbnpfdrqqlyygebozpmipjcshzyirhjistgfurpsstypmrheyarntcsjzpiiykivwdyujvbgarqzthqvjhzj\",\"description\":\"aut\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-8a3f-4a5b-856f-464a54446cee\",\n        \"title\": \"sapiente officia quam modi minus\",\n        \"description\": \"Placeat veritatis ipsa qui sunt consectetur.\",\n        \"status\": \"NOT_STARTED\",\n        \"user\": {\n            \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n            \"username\": \"wswift\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        }\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Find Project Task",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "95aa2532-8a3f-4a5b-856f-464a54446cee",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-8a3f-4a5b-856f-464a54446cee\",\n        \"title\": \"sapiente officia quam modi minus\",\n        \"description\": \"Placeat veritatis ipsa qui sunt consectetur.\",\n        \"status\": \"NOT_STARTED\",\n        \"user\": {\n            \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n            \"username\": \"wswift\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        }\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Project Task",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "95aa2532-8a3f-4a5b-856f-464a54446cee",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"jbxwsikkxmkspwjyindxgvtqgajiyofvjwlgwydinsaauhtkxbaaqwtrogesnflxwuulmzwxrmmoqfclggibkhoavxuujnocieokbruseiendukaqhqrwqsvjdlzrnici\",\"description\":\"voluptatem\",\"status\":\"ducimus\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-8a3f-4a5b-856f-464a54446cee\",\n        \"title\": \"sapiente officia quam modi minus\",\n        \"description\": \"Placeat veritatis ipsa qui sunt consectetur.\",\n        \"status\": \"NOT_STARTED\",\n        \"user\": {\n            \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n            \"username\": \"wswift\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        }\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Project Task",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "95aa2532-8a3f-4a5b-856f-464a54446cee",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Project Users",
+            "description": "",
+            "item": [
+                {
+                    "name": "Dissociate User from Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "95aa2532-6ea9-4082-9c7f-c30dd0c3087d",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Associate User to Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "95aa2532-6ea9-4082-9c7f-c30dd0c3087d",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n        \"username\": \"jeanette84\",\n        \"role\": \"MEMBER\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List Project Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project\/users",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n            \"username\": \"jeanette84\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-777a-4957-a5dc-f3dfeb6656ea\",\n            \"username\": \"briana.hoeger\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-77c4-4300-addc-b577b889badc\",\n            \"username\": \"nschmitt\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-7827-41b8-8c16-a514258f0efa\",\n            \"username\": \"anna44\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-7879-4303-b745-0858226d78cd\",\n            \"username\": \"dayna.moore\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n            \"username\": \"wswift\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-85e0-41ce-b600-d4566b7778f3\",\n            \"username\": \"kareem.moore\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-866f-41cc-a429-88ed9503906a\",\n            \"username\": \"uhalvorson\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-86e9-4662-a72a-7642a7839c23\",\n            \"username\": \"qschaden\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8769-4137-bb0e-c676b25d09c8\",\n            \"username\": \"stamm.emmett\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-87dd-473d-a612-862cbe396a28\",\n            \"username\": \"winifred53\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-885f-4d52-bf23-e49c02ef6e21\",\n            \"username\": \"toney.mayer\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-88e4-4a84-8870-a60e91bb3d2c\",\n            \"username\": \"quigley.bernard\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8961-4c33-aef2-5420e8470b4f\",\n            \"username\": \"ruby82\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-89da-4678-828b-6c1058a4238e\",\n            \"username\": \"ernser.eunice\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8e85-405b-b393-985edb903f5b\",\n            \"username\": \"flesch\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8f06-458b-a631-fcc6fd2c2f4f\",\n            \"username\": \"albina.auer\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8f7d-43f6-bb7d-dd0f93ce7716\",\n            \"username\": \"casey.cummings\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8ff2-42d4-a64a-42f37cdd34f7\",\n            \"username\": \"brycen49\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9069-4243-9323-3f5c8902a6cb\",\n            \"username\": \"harvey.sydnie\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-90e9-4554-af2b-9f3c7a3185df\",\n            \"username\": \"hills.nash\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-915e-402d-ab41-2b318ff236fa\",\n            \"username\": \"adriel69\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-91e2-44f0-8427-cdcb37d7701a\",\n            \"username\": \"donnelly.nichole\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9270-4181-af09-b44dc1a87885\",\n            \"username\": \"jaime.ebert\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-92f5-4eda-996c-b1ba3424e90b\",\n            \"username\": \"evans.walker\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-96bb-41fc-b8b2-0227d67a3915\",\n            \"username\": \"adeline61\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9731-4413-b501-6de7245e23dc\",\n            \"username\": \"phessel\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        }\n    ]\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Projects",
+            "description": "",
+            "item": [
+                {
+                    "name": "Find Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa28bb-4b23-401c-becf-9001125a3169\",\n        \"name\": \"aut dolores\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"gupxayoqjvhdpjlwaerktdupifbegxesikupvlwrqtpmhyxfakenglygujufrpuusdtkmcwdllkmjwtpdrqrvbrza\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa28bb-4b23-401c-becf-9001125a3169\",\n        \"name\": \"aut dolores\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project",
+                            "variable": [
+                                {
+                                    "id": "project",
+                                    "key": "project",
+                                    "value": "95aa2532-7916-4039-92e9-2c573b2cb7ef",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List Projects",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects",
+                            "query": [
+                                {
+                                    "key": "sortBy",
+                                    "value": "name",
+                                    "description": "The column to sort the projects by (created_at, updated_at, name).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "sortDirection",
+                                    "value": "ASC",
+                                    "description": "The direction to sort the column by (DESC, ASC).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "3",
+                                    "description": "Number of items to paginate (default: 3).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "0",
+                                    "description": "The current page number (default: 0).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "voluptas",
+                                    "description": "Optional search param to search projects by name",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects?sortBy=name&sortDirection=ASC&pageSize=3&pageIndex=0&search=voluptas"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": \"95aa28bb-4b23-401c-becf-9001125a3169\",\n            \"name\": \"aut dolores\"\n        },\n        {\n            \"id\": \"95aa2532-7916-4039-92e9-2c573b2cb7ef\",\n            \"name\": \"autem et\"\n        },\n        {\n            \"id\": \"95aa26bd-bb8f-4cf1-8426-8f133bbcf94d\",\n            \"name\": \"consectetur sunt\"\n        }\n    ]\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"zpqltmppbvoqe\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa28bb-4b23-401c-becf-9001125a3169\",\n        \"name\": \"aut dolores\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "description": "",
+            "item": [
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "95aa2532-6ea9-4082-9c7f-c30dd0c3087d",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"username\":\"sflxanwdmjbitkmthf\",\"role\":\"asperiores\",\"password\":\"frqhughvhdukaounfuacanbpvipoquhzsjtskvmuqbtrgkzmtaumumrijqmmmbmhrsng\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n        \"username\": \"jeanette84\",\n        \"role\": \"MEMBER\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Find User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "95aa2532-6ea9-4082-9c7f-c30dd0c3087d",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n        \"username\": \"jeanette84\",\n        \"role\": \"MEMBER\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:user",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:user",
+                            "variable": [
+                                {
+                                    "id": "user",
+                                    "key": "user",
+                                    "value": "95aa2532-6ea9-4082-9c7f-c30dd0c3087d",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"username\":\"dighxdvjtdnh\",\"role\":\"tenetur\",\"password\":\"svbehgnclsonnzilhloacorrzguwtxfbqjbyzbsyewn\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n        \"username\": \"jeanette84\",\n        \"role\": \"MEMBER\",\n        \"created_at\": \"2022-02-23T01:33:30+00:00\",\n        \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": \"95aa2532-772b-46cf-93ec-c2ad3eb79c76\",\n            \"username\": \"jeanette84\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-777a-4957-a5dc-f3dfeb6656ea\",\n            \"username\": \"briana.hoeger\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-77c4-4300-addc-b577b889badc\",\n            \"username\": \"nschmitt\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-7827-41b8-8c16-a514258f0efa\",\n            \"username\": \"anna44\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-7879-4303-b745-0858226d78cd\",\n            \"username\": \"dayna.moore\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-84c4-443f-b376-3b93b85efea8\",\n            \"username\": \"wswift\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-85e0-41ce-b600-d4566b7778f3\",\n            \"username\": \"kareem.moore\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-866f-41cc-a429-88ed9503906a\",\n            \"username\": \"uhalvorson\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-86e9-4662-a72a-7642a7839c23\",\n            \"username\": \"qschaden\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8769-4137-bb0e-c676b25d09c8\",\n            \"username\": \"stamm.emmett\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-87dd-473d-a612-862cbe396a28\",\n            \"username\": \"winifred53\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-885f-4d52-bf23-e49c02ef6e21\",\n            \"username\": \"toney.mayer\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-88e4-4a84-8870-a60e91bb3d2c\",\n            \"username\": \"quigley.bernard\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8961-4c33-aef2-5420e8470b4f\",\n            \"username\": \"ruby82\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-89da-4678-828b-6c1058a4238e\",\n            \"username\": \"ernser.eunice\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8e85-405b-b393-985edb903f5b\",\n            \"username\": \"flesch\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8f06-458b-a631-fcc6fd2c2f4f\",\n            \"username\": \"albina.auer\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8f7d-43f6-bb7d-dd0f93ce7716\",\n            \"username\": \"casey.cummings\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-8ff2-42d4-a64a-42f37cdd34f7\",\n            \"username\": \"brycen49\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9069-4243-9323-3f5c8902a6cb\",\n            \"username\": \"harvey.sydnie\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-90e9-4554-af2b-9f3c7a3185df\",\n            \"username\": \"hills.nash\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-915e-402d-ab41-2b318ff236fa\",\n            \"username\": \"adriel69\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-91e2-44f0-8427-cdcb37d7701a\",\n            \"username\": \"donnelly.nichole\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9270-4181-af09-b44dc1a87885\",\n            \"username\": \"jaime.ebert\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-92f5-4eda-996c-b1ba3424e90b\",\n            \"username\": \"evans.walker\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-96bb-41fc-b8b2-0227d67a3915\",\n            \"username\": \"adeline61\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        },\n        {\n            \"id\": \"95aa2532-9731-4413-b501-6de7245e23dc\",\n            \"username\": \"phessel\",\n            \"role\": \"MEMBER\",\n            \"created_at\": \"2022-02-23T01:33:30+00:00\",\n            \"updated_at\": \"2022-02-23T01:33:30+00:00\"\n        }\n    ]\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}

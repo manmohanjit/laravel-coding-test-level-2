@@ -1,0 +1,1893 @@
+openapi: 3.0.3
+info:
+  title: ACN
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/auth:
+    get:
+      summary: 'Show current authenticated user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                    username: jeanette84
+                    role: MEMBER
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - Auth
+    post:
+      summary: 'Login using username and password'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-6ea9-4082-9c7f-c30dd0c3087d
+                    username: joelle.beier
+                    role: ADMIN
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                  token: 1|YruevUgK3n01VXy6PcKfAHZA1Hu6QE5xWgzI7i9R
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-6ea9-4082-9c7f-c30dd0c3087d
+                      username: joelle.beier
+                      role: ADMIN
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                  token:
+                    type: string
+                    example: 1|YruevUgK3n01VXy6PcKfAHZA1Hu6QE5xWgzI7i9R
+      tags:
+        - Auth
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'The username for the account.'
+                  example: lcorkery
+                password:
+                  type: string
+                  description: 'The Password for the account.'
+                  example: password
+      security: []
+  '/api/v1/projects/{project}/tasks':
+    get:
+      summary: 'List Project Tasks'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                      title: 'sapiente officia quam modi minus'
+                      description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8b64-4ffd-8d2c-25ba084b48cb
+                      title: 'sit repudiandae enim ab animi'
+                      description: 'Nam quo id alias.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                        username: kareem.moore
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8bb6-435c-b40d-3f30860565f9
+                      title: 'exercitationem atque adipisci alias illo'
+                      description: 'Asperiores adipisci et ducimus commodi beatae odio quia numquam.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-866f-41cc-a429-88ed9503906a
+                        username: uhalvorson
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                        title: 'sapiente officia quam modi minus'
+                        description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                        status: NOT_STARTED
+                        user:
+                          id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                          username: wswift
+                          role: MEMBER
+                          created_at: '2022-02-23T01:33:30+00:00'
+                          updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8b64-4ffd-8d2c-25ba084b48cb
+                        title: 'sit repudiandae enim ab animi'
+                        description: 'Nam quo id alias.'
+                        status: NOT_STARTED
+                        user:
+                          id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                          username: kareem.moore
+                          role: MEMBER
+                          created_at: '2022-02-23T01:33:30+00:00'
+                          updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8bb6-435c-b40d-3f30860565f9
+                        title: 'exercitationem atque adipisci alias illo'
+                        description: 'Asperiores adipisci et ducimus commodi beatae odio quia numquam.'
+                        status: NOT_STARTED
+                        user:
+                          id: 95aa2532-866f-41cc-a429-88ed9503906a
+                          username: uhalvorson
+                          role: MEMBER
+                          created_at: '2022-02-23T01:33:30+00:00'
+                          updated_at: '2022-02-23T01:33:30+00:00'
+                    items:
+                      type: object
+      tags:
+        - 'Project Tasks'
+      security: []
+    post:
+      summary: 'Create Project Task'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                    title: 'sapiente officia quam modi minus'
+                    description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                    status: NOT_STARTED
+                    user:
+                      id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                      username: wswift
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                      title: 'sapiente officia quam modi minus'
+                      description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - 'Project Tasks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 255 characters.'
+                  example: uydbqzcpsqhsfwrwgphbagviitcswpbxepkxafaztikeafizupkvhckgckmcqsupzvlkbnpfdrqqlyygebozpmipjcshzyirhjistgfurpsstypmrheyarntcsjzpiiykivwdyujvbgarqzthqvjhzj
+                description:
+                  type: string
+                  description: ''
+                  example: aut
+                user_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - title
+    parameters:
+      -
+        in: path
+        name: project
+        description: ''
+        example: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+        required: true
+        schema:
+          type: string
+  '/api/v1/projects/{project}/tasks/{id}':
+    get:
+      summary: 'Find Project Task'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                    title: 'sapiente officia quam modi minus'
+                    description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                    status: NOT_STARTED
+                    user:
+                      id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                      username: wswift
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                      title: 'sapiente officia quam modi minus'
+                      description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - 'Project Tasks'
+      security: []
+    put:
+      summary: 'Update Project Task'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                    title: 'sapiente officia quam modi minus'
+                    description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                    status: NOT_STARTED
+                    user:
+                      id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                      username: wswift
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-8a3f-4a5b-856f-464a54446cee
+                      title: 'sapiente officia quam modi minus'
+                      description: 'Placeat veritatis ipsa qui sunt consectetur.'
+                      status: NOT_STARTED
+                      user:
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - 'Project Tasks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 255 characters.'
+                  example: jbxwsikkxmkspwjyindxgvtqgajiyofvjwlgwydinsaauhtkxbaaqwtrogesnflxwuulmzwxrmmoqfclggibkhoavxuujnocieokbruseiendukaqhqrwqsvjdlzrnici
+                description:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                status:
+                  type: string
+                  description: ''
+                  example: ducimus
+              required:
+                - title
+                - status
+    delete:
+      summary: 'Delete Project Task'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - 'Project Tasks'
+    parameters:
+      -
+        in: path
+        name: project
+        description: ''
+        example: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: 95aa2532-8a3f-4a5b-856f-464a54446cee
+        required: true
+        schema:
+          type: string
+  '/api/v1/projects/{project}/users/{id}':
+    delete:
+      summary: 'Dissociate User from Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - 'Project Users'
+    put:
+      summary: 'Associate User to Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                    username: jeanette84
+                    role: MEMBER
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - 'Project Users'
+    parameters:
+      -
+        in: path
+        name: project
+        description: ''
+        example: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 95aa2532-6ea9-4082-9c7f-c30dd0c3087d
+        required: true
+        schema:
+          type: string
+  '/api/v1/projects/{project}/users':
+    get:
+      summary: 'List Project Users'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-777a-4957-a5dc-f3dfeb6656ea
+                      username: briana.hoeger
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-77c4-4300-addc-b577b889badc
+                      username: nschmitt
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-7827-41b8-8c16-a514258f0efa
+                      username: anna44
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-7879-4303-b745-0858226d78cd
+                      username: dayna.moore
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                      username: wswift
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                      username: kareem.moore
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-866f-41cc-a429-88ed9503906a
+                      username: uhalvorson
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-86e9-4662-a72a-7642a7839c23
+                      username: qschaden
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8769-4137-bb0e-c676b25d09c8
+                      username: stamm.emmett
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-87dd-473d-a612-862cbe396a28
+                      username: winifred53
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-885f-4d52-bf23-e49c02ef6e21
+                      username: toney.mayer
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-88e4-4a84-8870-a60e91bb3d2c
+                      username: quigley.bernard
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8961-4c33-aef2-5420e8470b4f
+                      username: ruby82
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-89da-4678-828b-6c1058a4238e
+                      username: ernser.eunice
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8e85-405b-b393-985edb903f5b
+                      username: flesch
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8f06-458b-a631-fcc6fd2c2f4f
+                      username: albina.auer
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8f7d-43f6-bb7d-dd0f93ce7716
+                      username: casey.cummings
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8ff2-42d4-a64a-42f37cdd34f7
+                      username: brycen49
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9069-4243-9323-3f5c8902a6cb
+                      username: harvey.sydnie
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-90e9-4554-af2b-9f3c7a3185df
+                      username: hills.nash
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-915e-402d-ab41-2b318ff236fa
+                      username: adriel69
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-91e2-44f0-8427-cdcb37d7701a
+                      username: donnelly.nichole
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9270-4181-af09-b44dc1a87885
+                      username: jaime.ebert
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-92f5-4eda-996c-b1ba3424e90b
+                      username: evans.walker
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-96bb-41fc-b8b2-0227d67a3915
+                      username: adeline61
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9731-4413-b501-6de7245e23dc
+                      username: phessel
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                        username: jeanette84
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-777a-4957-a5dc-f3dfeb6656ea
+                        username: briana.hoeger
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-77c4-4300-addc-b577b889badc
+                        username: nschmitt
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-7827-41b8-8c16-a514258f0efa
+                        username: anna44
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-7879-4303-b745-0858226d78cd
+                        username: dayna.moore
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                        username: kareem.moore
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-866f-41cc-a429-88ed9503906a
+                        username: uhalvorson
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-86e9-4662-a72a-7642a7839c23
+                        username: qschaden
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8769-4137-bb0e-c676b25d09c8
+                        username: stamm.emmett
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-87dd-473d-a612-862cbe396a28
+                        username: winifred53
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-885f-4d52-bf23-e49c02ef6e21
+                        username: toney.mayer
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-88e4-4a84-8870-a60e91bb3d2c
+                        username: quigley.bernard
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8961-4c33-aef2-5420e8470b4f
+                        username: ruby82
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-89da-4678-828b-6c1058a4238e
+                        username: ernser.eunice
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8e85-405b-b393-985edb903f5b
+                        username: flesch
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8f06-458b-a631-fcc6fd2c2f4f
+                        username: albina.auer
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8f7d-43f6-bb7d-dd0f93ce7716
+                        username: casey.cummings
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8ff2-42d4-a64a-42f37cdd34f7
+                        username: brycen49
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9069-4243-9323-3f5c8902a6cb
+                        username: harvey.sydnie
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-90e9-4554-af2b-9f3c7a3185df
+                        username: hills.nash
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-915e-402d-ab41-2b318ff236fa
+                        username: adriel69
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-91e2-44f0-8427-cdcb37d7701a
+                        username: donnelly.nichole
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9270-4181-af09-b44dc1a87885
+                        username: jaime.ebert
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-92f5-4eda-996c-b1ba3424e90b
+                        username: evans.walker
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-96bb-41fc-b8b2-0227d67a3915
+                        username: adeline61
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9731-4413-b501-6de7245e23dc
+                        username: phessel
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                    items:
+                      type: object
+      tags:
+        - 'Project Users'
+      security: []
+    parameters:
+      -
+        in: path
+        name: project
+        description: ''
+        example: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+        required: true
+        schema:
+          type: string
+  '/api/v1/projects/{project}':
+    get:
+      summary: 'Find Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa28bb-4b23-401c-becf-9001125a3169
+                    name: 'aut dolores'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa28bb-4b23-401c-becf-9001125a3169
+                      name: 'aut dolores'
+      tags:
+        - Projects
+      security: []
+    put:
+      summary: 'Update Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa28bb-4b23-401c-becf-9001125a3169
+                    name: 'aut dolores'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa28bb-4b23-401c-becf-9001125a3169
+                      name: 'aut dolores'
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 100 characters.'
+                  example: gupxayoqjvhdpjlwaerktdupifbegxesikupvlwrqtpmhyxfakenglygujufrpuusdtkmcwdllkmjwtpdrqrvbrza
+              required:
+                - name
+    delete:
+      summary: 'Delete Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - Projects
+    parameters:
+      -
+        in: path
+        name: project
+        description: ''
+        example: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+        required: true
+        schema:
+          type: string
+  /api/v1/projects:
+    get:
+      summary: 'List Projects'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: sortBy
+          description: 'The column to sort the projects by (created_at, updated_at, name).'
+          example: name
+          required: false
+          schema:
+            type: string
+            description: 'The column to sort the projects by (created_at, updated_at, name).'
+            example: name
+        -
+          in: query
+          name: sortDirection
+          description: 'The direction to sort the column by (DESC, ASC).'
+          example: ASC
+          required: false
+          schema:
+            type: string
+            description: 'The direction to sort the column by (DESC, ASC).'
+            example: ASC
+        -
+          in: query
+          name: pageSize
+          description: 'Number of items to paginate (default: 3).'
+          example: 3
+          required: false
+          schema:
+            type: integer
+            description: 'Number of items to paginate (default: 3).'
+            example: 3
+        -
+          in: query
+          name: pageIndex
+          description: 'The current page number (default: 0).'
+          example: 0
+          required: false
+          schema:
+            type: integer
+            description: 'The current page number (default: 0).'
+            example: 0
+        -
+          in: query
+          name: search
+          description: 'Optional search param to search projects by name'
+          example: voluptas
+          required: false
+          schema:
+            type: string
+            description: 'Optional search param to search projects by name'
+            example: voluptas
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 95aa28bb-4b23-401c-becf-9001125a3169
+                      name: 'aut dolores'
+                    -
+                      id: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+                      name: 'autem et'
+                    -
+                      id: 95aa26bd-bb8f-4cf1-8426-8f133bbcf94d
+                      name: 'consectetur sunt'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 95aa28bb-4b23-401c-becf-9001125a3169
+                        name: 'aut dolores'
+                      -
+                        id: 95aa2532-7916-4039-92e9-2c573b2cb7ef
+                        name: 'autem et'
+                      -
+                        id: 95aa26bd-bb8f-4cf1-8426-8f133bbcf94d
+                        name: 'consectetur sunt'
+                    items:
+                      type: object
+      tags:
+        - Projects
+      security: []
+    post:
+      summary: 'Create Project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa28bb-4b23-401c-becf-9001125a3169
+                    name: 'aut dolores'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa28bb-4b23-401c-becf-9001125a3169
+                      name: 'aut dolores'
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 100 characters.'
+                  example: zpqltmppbvoqe
+              required:
+                - name
+  '/api/v1/users/{user}':
+    delete:
+      summary: 'Delete User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - Users
+    get:
+      summary: 'Find User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                    username: jeanette84
+                    role: MEMBER
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - Users
+    put:
+      summary: 'Update User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                    username: jeanette84
+                    role: MEMBER
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores. Must be at least 3 characters. Must not be greater than 24 characters.'
+                  example: dighxdvjtdnh
+                role:
+                  type: string
+                  description: ''
+                  example: tenetur
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 72 characters.'
+                  example: svbehgnclsonnzilhloacorrzguwtxfbqjbyzbsyewn
+              required:
+                - username
+                - role
+                - password
+    parameters:
+      -
+        in: path
+        name: user
+        description: ''
+        example: 95aa2532-6ea9-4082-9c7f-c30dd0c3087d
+        required: true
+        schema:
+          type: string
+  /api/v1/users:
+    post:
+      summary: 'Create User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                    username: jeanette84
+                    role: MEMBER
+                    created_at: '2022-02-23T01:33:30+00:00'
+                    updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores. Must be at least 3 characters. Must not be greater than 24 characters.'
+                  example: sflxanwdmjbitkmthf
+                role:
+                  type: string
+                  description: ''
+                  example: asperiores
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters. Must not be greater than 72 characters.'
+                  example: frqhughvhdukaounfuacanbpvipoquhzsjtskvmuqbtrgkzmtaumumrijqmmmbmhrsng
+              required:
+                - username
+                - role
+                - password
+    get:
+      summary: 'List Users'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                      username: jeanette84
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-777a-4957-a5dc-f3dfeb6656ea
+                      username: briana.hoeger
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-77c4-4300-addc-b577b889badc
+                      username: nschmitt
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-7827-41b8-8c16-a514258f0efa
+                      username: anna44
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-7879-4303-b745-0858226d78cd
+                      username: dayna.moore
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                      username: wswift
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                      username: kareem.moore
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-866f-41cc-a429-88ed9503906a
+                      username: uhalvorson
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-86e9-4662-a72a-7642a7839c23
+                      username: qschaden
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8769-4137-bb0e-c676b25d09c8
+                      username: stamm.emmett
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-87dd-473d-a612-862cbe396a28
+                      username: winifred53
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-885f-4d52-bf23-e49c02ef6e21
+                      username: toney.mayer
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-88e4-4a84-8870-a60e91bb3d2c
+                      username: quigley.bernard
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8961-4c33-aef2-5420e8470b4f
+                      username: ruby82
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-89da-4678-828b-6c1058a4238e
+                      username: ernser.eunice
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8e85-405b-b393-985edb903f5b
+                      username: flesch
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8f06-458b-a631-fcc6fd2c2f4f
+                      username: albina.auer
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8f7d-43f6-bb7d-dd0f93ce7716
+                      username: casey.cummings
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-8ff2-42d4-a64a-42f37cdd34f7
+                      username: brycen49
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9069-4243-9323-3f5c8902a6cb
+                      username: harvey.sydnie
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-90e9-4554-af2b-9f3c7a3185df
+                      username: hills.nash
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-915e-402d-ab41-2b318ff236fa
+                      username: adriel69
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-91e2-44f0-8427-cdcb37d7701a
+                      username: donnelly.nichole
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9270-4181-af09-b44dc1a87885
+                      username: jaime.ebert
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-92f5-4eda-996c-b1ba3424e90b
+                      username: evans.walker
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-96bb-41fc-b8b2-0227d67a3915
+                      username: adeline61
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                    -
+                      id: 95aa2532-9731-4413-b501-6de7245e23dc
+                      username: phessel
+                      role: MEMBER
+                      created_at: '2022-02-23T01:33:30+00:00'
+                      updated_at: '2022-02-23T01:33:30+00:00'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 95aa2532-772b-46cf-93ec-c2ad3eb79c76
+                        username: jeanette84
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-777a-4957-a5dc-f3dfeb6656ea
+                        username: briana.hoeger
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-77c4-4300-addc-b577b889badc
+                        username: nschmitt
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-7827-41b8-8c16-a514258f0efa
+                        username: anna44
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-7879-4303-b745-0858226d78cd
+                        username: dayna.moore
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-84c4-443f-b376-3b93b85efea8
+                        username: wswift
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-85e0-41ce-b600-d4566b7778f3
+                        username: kareem.moore
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-866f-41cc-a429-88ed9503906a
+                        username: uhalvorson
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-86e9-4662-a72a-7642a7839c23
+                        username: qschaden
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8769-4137-bb0e-c676b25d09c8
+                        username: stamm.emmett
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-87dd-473d-a612-862cbe396a28
+                        username: winifred53
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-885f-4d52-bf23-e49c02ef6e21
+                        username: toney.mayer
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-88e4-4a84-8870-a60e91bb3d2c
+                        username: quigley.bernard
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8961-4c33-aef2-5420e8470b4f
+                        username: ruby82
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-89da-4678-828b-6c1058a4238e
+                        username: ernser.eunice
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8e85-405b-b393-985edb903f5b
+                        username: flesch
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8f06-458b-a631-fcc6fd2c2f4f
+                        username: albina.auer
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8f7d-43f6-bb7d-dd0f93ce7716
+                        username: casey.cummings
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-8ff2-42d4-a64a-42f37cdd34f7
+                        username: brycen49
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9069-4243-9323-3f5c8902a6cb
+                        username: harvey.sydnie
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-90e9-4554-af2b-9f3c7a3185df
+                        username: hills.nash
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-915e-402d-ab41-2b318ff236fa
+                        username: adriel69
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-91e2-44f0-8427-cdcb37d7701a
+                        username: donnelly.nichole
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9270-4181-af09-b44dc1a87885
+                        username: jaime.ebert
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-92f5-4eda-996c-b1ba3424e90b
+                        username: evans.walker
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-96bb-41fc-b8b2-0227d67a3915
+                        username: adeline61
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                      -
+                        id: 95aa2532-9731-4413-b501-6de7245e23dc
+                        username: phessel
+                        role: MEMBER
+                        created_at: '2022-02-23T01:33:30+00:00'
+                        updated_at: '2022-02-23T01:33:30+00:00'
+                    items:
+                      type: object
+      tags:
+        - Users
+tags:
+  -
+    name: Auth
+    description: ''
+  -
+    name: 'Project Tasks'
+    description: ''
+  -
+    name: 'Project Users'
+    description: ''
+  -
+    name: Projects
+    description: ''
+  -
+    name: Users
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []
