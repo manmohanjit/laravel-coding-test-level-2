@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Resources\Project as ProjectResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,6 +25,28 @@ class ProjectController extends Controller
         $this->middleware(['auth:sanctum'])->only(['store', 'update', 'destroy']);
     }
 
+    protected function getFilterParams(Request $request) : array
+    {
+        // Sort By: default: name, possible values: created_at/updated_at/name
+        $sortBy = $request->input('sortBy', 'name');
+        $sortBy = in_array($sortBy, ['created_at', 'updated_at', 'name']) ? $sortBy : 'name';
+
+        // Sort Direction: default: asc, possible values: asc/desc
+        $sortDirection = strtoupper($request->input('sortDirection', 'ASC'));
+        $sortDirection = in_array($sortDirection, ['ASC', 'DESC']) ? $sortDirection : 'ASC';
+
+        // Page Size: default: 3, min 1
+        $pageSize = max((int) $request->input('pageSize', 3), 1);
+
+        // Page Index: default: 0
+        $pageIndex = (int) $request->input('pageIndex', 0);
+
+        // Search filter: default: null
+        $search = $request->input('q');
+
+        return [$sortBy, $sortDirection, $pageSize, $pageIndex, $search];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,34 +55,30 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $projects = Project::query();
+        [$sortBy, $sortDirection, $pageSize, $pageIndex, $search] = static::getFilterParams($request);
 
-        $sortBy = $request->input('sortBy', 'name'); // default: name, possible values: created_at/updated_at/name
-        $sortDirection = strtoupper($request->input('sortDirection', 'ASC')); // default: asc, possible values: asc/desc
-        $pageSize = max((int) $request->input('pageSize', 3), 1); // default: 3, min 1
-        $pageIndex = (int) $request->input('pageIndex', 0); // default: 0
+        $cacheKey = md5(implode(',', [$sortBy, $sortDirection, $pageSize, $pageIndex, $search]));
 
-        if(in_array($sortBy, ['created_at', 'updated_at', 'name'])) {
-            $projects->orderBy(
-                $sortBy,
-                in_array($sortDirection, ['ASC', 'DESC']) ? $sortDirection : 'ASC'
-            );
-        }
+        $cache = Cache::supportsTags() ? Cache::tags(['projects']) : Cache::getFacadeRoot();
 
-        if($request->has('q')) {
-            $search = $request->input('q');
+        $projects = $cache->remember($cacheKey, 30, function() use($sortBy, $sortDirection, $pageSize, $pageIndex, $search) {
+            $projects = Project::query();
 
-            $projects->where('name', 'LIKE', "%".$search."%");
-        }
+            $projects->orderBy($sortBy, $sortDirection);
 
-        // Built-in pagination links seem to mess up when using page=0
-        // as starting point. Therefor, we do the offsetting manually.
-        // Ideally, we extend it so that it works and can be re-used
-        // easily as well as provide consistent API responses with page
-        // numbers
-        $projects->skip($pageIndex * $pageSize)->take($pageSize);
+            // Built-in pagination links seem to mess up when using page=0
+            // as starting point. Therefor, we do the offsetting manually.
+            // Ideally, we extend it so that it works and can be re-used
+            // easily as well as provide consistent API responses with page
+            // numbers
+            $projects->skip($pageIndex * $pageSize)->take($pageSize);
 
-        $projects = $projects->get();
+            if($search) {
+                $projects->where('name', 'LIKE', "%".$search."%");
+            }
+
+            return $projects->get();
+        });
 
         return ProjectResource::collection($projects)
             ->response();

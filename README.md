@@ -67,6 +67,6 @@ Team member only have visibility to their projects.
 17. ✅ Create a PR against `main` branch and merge it, don't forget to delete the feature branch afterwards
 
 ### Instructions (BONUS)
-1. Implement caching for the pagination API using `redis`
+1. ✅ Implement caching for the pagination API using `redis`
 2. Package the application into a Docker image and deploy it to Heroku
 3. Create an OpenAPI 3.0 Spec for your APIs
